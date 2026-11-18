@@ -1,0 +1,8 @@
+---
+# dev/logstash/codebuild.yaml
+#
+template: 
+  path: codebuild.yaml.j2
+
+sceptre_user_data:
+  ecr_repository_name: !stack_output dev/logstash/ecr.yaml::EcrRepositoryName

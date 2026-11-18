@@ -1,0 +1,15 @@
+---
+# dev/logstash/codepipeline.yaml
+#
+template:
+  path: codepipeline.yaml.j2
+
+sceptre_user_data:
+  codebuild_project: !stack_output dev/logstash/codebuild.yaml::CodeBuildProject
+  scheduler_expression: 'rate(1 day)'
+  #scheduler_expression: 'rate(1 hour)'
+  #scheduler_expression: 'rate(15 minutes)'
+  scheduler_state: ENABLED
+  include_tag_patterns:
+    - '*'
+

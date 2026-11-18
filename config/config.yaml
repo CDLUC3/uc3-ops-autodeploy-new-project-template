@@ -1,0 +1,15 @@
+project_code: uc3-ops-autodeploy
+region: us-west-2
+sceptre_user_data_inheritance: merge
+
+stack_tags:
+  Program: uc3
+  Service: ops
+  Subservice: audodeploy
+  Environment: {{ command_path.0 }}
+  CodeRepo: https://github.com/cdluc3/uc3-ops-audodeploy.git
+  Contact: agould@ucop.edu
+
+sceptre_user_data:
+  lambda_code_local_path: data/lambda/ecs_autodeploy.py
+

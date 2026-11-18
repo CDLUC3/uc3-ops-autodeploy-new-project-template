@@ -1,0 +1,15 @@
+---
+# dev/config.yaml
+#
+profile: cdl-uc3-dev-ops
+template_bucket_name: sceptre-uc3-ops-common-cf-bucket
+
+sceptre_user_data:
+  artifact_bucket_name: sceptre-uc3-ops-common-cf-bucket
+  codestar_connection_arn: !stack_output_external uc3-ops-aws-dev-codestar::CodestarConnectionARN
+  #codestar_connection_arn: !ssm /uc3/mrt/codestar
+  ssm_base_path: /uc3/ops/autodeploy
+  environment: {{ command_path.0 }}
+  taskdef_imagetag: dev-latest
+
+
