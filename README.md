@@ -72,9 +72,23 @@ Setup
 -----
 
 
-1. Create your autodeploy project repository from github template
+1. Create your new autodeploy project repository from github template.
 
-1. Set up subtree
+   Follow instruction for [Creating a Repository from a Template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template).
+   
+   For **owner** select `CDLUC3`.
+   
+   Set access rights for devs on your team.
+
+1. Clone your new repo onto your workstation.
+
+   Examples based on `ngrams-autodeploy`
+   ```
+   git clone git@github.com:CDLUC3/ngrams-autodeploy.git
+   cd ngrams-autodeploy/
+   ```
+
+1. Set up subtree 
    ```
    git remote add autodeploy-subtree git@github.com:CDLUC3/uc3-ops-autodeploy-subtree.git
    git subtree add --prefix subtree autodeploy-subtree main --squash
@@ -121,7 +135,6 @@ Setup
 Example based on EZID
 
 In github create a new private repository `ezid-autodeploy`.  Do not add
-README.md, .gitignore, or licence.  Set access rights for devs on your team.
 
 ```
 ~> cd ~/git-repos/
