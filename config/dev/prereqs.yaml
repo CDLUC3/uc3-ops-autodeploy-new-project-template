@@ -1,5 +1,0 @@
----
-# dev/prereqs.yaml
-#
-template:
-  path: prereqs.yaml.j2
