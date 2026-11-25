@@ -120,59 +120,59 @@ Setup
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Example based on EZID
-
-In github create a new private repository `ezid-autodeploy`.  Do not add
-
-```
-~> cd ~/git-repos/
-~/git-repos> git clone https://github.com/CDLUC3/uc3-ops-autodeploy-new-project-template ezid-autodeploy
-~/git-repos> cd ezid-autodeploy/
-~/git-repos/ezid-autodeploy> git remote set-url origin git@github.com:CDLUC3/ezid-autodeploy.git
-~/git-repos/ezid-autodeploy> git push --set-upstream origin main
-
-~/git-repos/ezid-autodeploy> git remote add autodeploy-subtree git@github.com:CDLUC3/uc3-ops-autodeploy-subtree.git
-~/git-repos/ezid-autodeploy> git subtree add --prefix subtree autodeploy-subtree main --squash
-
-
-
-Set up your sceptre config based on `subtree/reference_config`
-```
-~/git-repos/ezid-autodeploy> cp -a subtree/reference_config config
-```
-
-
-
-
-Updating your subtree
----------------------
-
-```
-~/git-repos/ezid-autodeploy> git subtree pull --prefix subtree autodeploy-subtree main --squash
-
-ops-autodeploy> git subtree pull --prefix subtree autodeploy-subtree git-subtree --squash
-```
-
-
-
-Notes
------
-### git subtree usage
+`git subtree` Usage
+-------------------
 Links:
 - https://www.datacamp.com/tutorial/git-subtree
 - https://git-memo.readthedocs.io/en/latest/subtree.html
+
+
+### Update your subtree
+```
+git subtree pull --prefix subtree autodeploy-subtree main --squash
+```
+
+Pull in subtree updates from an alternate branch
+```
+git subtree pull --prefix subtree autodeploy-subtree my-feature-branch --squash
+```
+
+
+### Update remote subtree repo
+
+1. push to a topic branch on remote
+   ```
+   git subtree push --prefix=subtree autodeploy-subtree revise_lambda
+   ```
+
+1. create pull request on remote
+
+1. after PR is merged on remote, be sure to sync your local subtree with remote to capture any modifications.
+
+
+example output
+```
+agould@Linux:~/git/github/cdluc3/uc3-ops-autodeploy> git subtree push --prefix=subtree autodeploy-subtree revise_lambda
+git push using:  autodeploy-subtree revise_lambda
+Enumerating objects: 76, done.
+Counting objects: 100% (76/76), done.
+Delta compression using up to 18 threads
+Compressing objects: 100% (59/59), done.
+Writing objects: 100% (67/67), 7.72 KiB | 2.57 MiB/s, done.
+Total 67 (delta 31), reused 3 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (31/31), completed with 6 local objects.
+remote: 
+remote: Create a pull request for 'revise_lambda' on GitHub by visiting:
+remote:      https://github.com/CDLUC3/uc3-ops-autodeploy-subtree/pull/new/revise_lambda
+remote: 
+To github.com:CDLUC3/uc3-ops-autodeploy-subtree.git
+ * [new branch]      467169e8424b66518e958ed78caba35932a456ba -> revise_lambda
+```
+
+
+
+
+
 
 
 
@@ -180,5 +180,4 @@ Links:
 ToDo
 ----
 
-explore using github template repository feature:
-  https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
+DONE explore using github template repository feature:
