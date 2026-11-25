@@ -8,8 +8,8 @@ But I want to centralize tamplates and documentation in a shared repo.
 repos
 -----
 ```
+uc3-ops-autodeploy
 uc3-ops-autodeploy-new-project-template
-uc3-ops-autodeploy-subtree
 ```
 
 active projects
@@ -17,7 +17,7 @@ active projects
 ```
 dmp-autodeploy
 ezid-autodeploy
-uc3-ops-autodeploy
+uc3-ops-logstash-autodeploy
 ngrams-autodeploy
 ```
 
@@ -90,7 +90,7 @@ Setup
 
 1. Set up subtree 
    ```
-   git remote add autodeploy-subtree git@github.com:CDLUC3/uc3-ops-autodeploy-subtree.git
+   git remote add autodeploy-subtree git@github.com:CDLUC3/uc3-ops-autodeploy.git
    git subtree add --prefix subtree autodeploy-subtree main --squash
    ```
 
@@ -152,7 +152,7 @@ git subtree pull --prefix subtree autodeploy-subtree my-feature-branch --squash
 
 example output
 ```
-agould@Linux:~/git/github/cdluc3/uc3-ops-autodeploy> git subtree push --prefix=subtree autodeploy-subtree revise_lambda
+agould@Linux:~/git/github/cdluc3/uc3-ops-logstash-autodeploy> git subtree push --prefix=subtree autodeploy-subtree revise_lambda
 git push using:  autodeploy-subtree revise_lambda
 Enumerating objects: 76, done.
 Counting objects: 100% (76/76), done.
@@ -163,9 +163,9 @@ Total 67 (delta 31), reused 3 (delta 0), pack-reused 0 (from 0)
 remote: Resolving deltas: 100% (31/31), completed with 6 local objects.
 remote: 
 remote: Create a pull request for 'revise_lambda' on GitHub by visiting:
-remote:      https://github.com/CDLUC3/uc3-ops-autodeploy-subtree/pull/new/revise_lambda
+remote:      https://github.com/CDLUC3/uc3-ops-autodeploy/pull/new/revise_lambda
 remote: 
-To github.com:CDLUC3/uc3-ops-autodeploy-subtree.git
+To github.com:CDLUC3/uc3-ops-autodeploy.git
  * [new branch]      467169e8424b66518e958ed78caba35932a456ba -> revise_lambda
 ```
 
