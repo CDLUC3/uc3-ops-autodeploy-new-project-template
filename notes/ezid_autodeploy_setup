@@ -1,0 +1,42 @@
+________________________________________________________________________________
+11/25/2026
+
+agould@Linux:~/git/github/cdluc3> git clone git@github.com:CDLUC3/ezid-autodeploy.git
+Cloning into 'ezid-autodeploy'...
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 2 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (4/4), done.
+agould@Linux:~/git/github/cdluc3> git remote add autodeploy-subtree git@github.com:CDLUC3/uc3-ops-autodeploy.git
+fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+agould@Linux:~/git/github/cdluc3> cd ezid-autodeploy/
+agould@Linux:~/git/github/cdluc3/ezid-autodeploy> git remote add autodeploy-subtree git@github.com:CDLUC3/uc3-ops-autodeploy.git
+agould@Linux:~/git/github/cdluc3/ezid-autodeploy> git subtree add --prefix subtree autodeploy-subtree main --squash
+git fetch autodeploy-subtree main
+remote: Enumerating objects: 654, done.
+remote: Counting objects: 100% (153/153), done.
+remote: Compressing objects: 100% (99/99), done.
+remote: Total 654 (delta 75), reused 117 (delta 46), pack-reused 501 (from 1)
+Receiving objects: 100% (654/654), 99.74 KiB | 1.96 MiB/s, done.
+Resolving deltas: 100% (342/342), done.
+From github.com:CDLUC3/uc3-ops-autodeploy
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> autodeploy-subtree/main
+Added dir 'subtree'
+agould@Linux:~/git/github/cdluc3/ezid-autodeploy> ln -s subtree/templates/ templates 
+agould@Linux:~/git/github/cdluc3/ezid-autodeploy> ln -s subtree/docs/ docs 
+agould@Linux:~/git/github/cdluc3/ezid-autodeploy> ls -l
+total 16
+lrwxrwxrwx. 1 agould agould   13 Nov 25 10:35 docs -> subtree/docs/
+-rw-r--r--. 1 agould agould 4974 Nov 25 10:33 README.md
+drwxr-xr-x. 1 agould agould  106 Nov 25 10:35 subtree
+lrwxrwxrwx. 1 agould agould   18 Nov 25 10:35 templates -> subtree/templates/
+agould@Linux:~/git/github/cdluc3/ezid-autodeploy> cp -a subtree/reference_config config
+agould@Linux:~/git/github/cdluc3/ezid-autodeploy> mv config/dev/logstash/ config/dev/n2t
+
+
+agould@Linux:~/git/github/cdluc3/ezid-autodeploy> sceptre launch -y dev/n2t/web
+agould@Linux:~/git/github/cdluc3/ezid-autodeploy> sceptre launch -y dev/n2t/app
+
